@@ -1,12 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import OnePage from './src/one';
+import TwoPage from './src/two';
+const Drawer = createDrawerNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="one">
+        <Drawer.Screen name="one" component={OnePage} />
+        <Drawer.Screen name="two" component={TwoPage} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
